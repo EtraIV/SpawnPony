@@ -30,7 +30,7 @@ public void OnPluginStart()
 public void SpawnPony(Handle event, const char[] name, bool dontBroadcast)
 {
 	char path[PLATFORM_MAX_PATH], mapname[PLATFORM_MAX_PATH];
-	
+
 	GetCurrentMap(mapname, sizeof(mapname));	
 	BuildPath(Path_SM, path, sizeof(path), "configs/spawnpony/%s.cfg", mapname);
 		
@@ -45,22 +45,22 @@ public void SpawnPony(Handle event, const char[] name, bool dontBroadcast)
 		delete kv;
 		return;
 	}
-	
+
 	if (!kv.GotoFirstSubKey()) {
 		SetFailState("Error reading first key from config file %s", path);
 		delete kv;
 		return;
 	}
-	
+
 	do {
 		Pony newpony;
 		kv.GetSectionName(newpony.name, sizeof(newpony.name));
 		kv.GetString("path", newpony.path, sizeof(newpony.path));
 		kv.GetString("animation", newpony.animation, sizeof(newpony.animation));
-		kv.GetString("bodygroup",newpony. bodygroup, sizeof(newpony.bodygroup));
+		kv.GetString("bodygroup", newpony.bodygroup, sizeof(newpony.bodygroup));
 		kv.GetVector("position", newpony.position);
 		kv.GetVector("angles", newpony.angles);
-		
+
 		Entity_SpawnProp(newpony);
 	} while (kv.GotoNextKey());
 
