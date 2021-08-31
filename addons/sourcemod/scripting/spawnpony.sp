@@ -9,9 +9,18 @@ public Plugin myinfo = {
 	name = "SpawnPony",
 	author = "Etra",
 	description = "Automatically spawns ponies into the map on roundstart.",
-	version = "1.3",
+	version = "1.4",
 	url = "https://boards.4chan.org/mlp/"
 };
+
+enum struct Pony {
+	char name[64];
+	char path[PLATFORM_MAX_PATH];
+	char animation[256];
+	char bodygroup[2];
+	float position[3];
+	float angles[3];
+}
 
 public void OnPluginStart()
 {
@@ -44,37 +53,33 @@ public void SpawnPony(Handle event, const char[] name, bool dontBroadcast)
 	}
 	
 	do {
-		char mdlname[64];
-		char mdlpath[PLATFORM_MAX_PATH];
-		float position[3];
-		float angles[3];
-		char animation[256];
+		Pony newpony;
+		kv.GetSectionName(newpony.name, sizeof(newpony.name));
+		kv.GetString("path", newpony.path, sizeof(newpony.path));
+		kv.GetString("animation", newpony.animation, sizeof(newpony.animation));
+		kv.GetString("bodygroup",newpony. bodygroup, sizeof(newpony.bodygroup));
+		kv.GetVector("position", newpony.position);
+		kv.GetVector("angles", newpony.angles);
 		
-		kv.GetSectionName(mdlname, sizeof(mdlname));
-		kv.GetString("path", mdlpath, sizeof(mdlpath));
-		kv.GetString("animation", animation, sizeof(animation));
-		kv.GetVector("position", position);
-		kv.GetVector("angles", angles);
-		
-		Entity_SpawnProp(mdlname, mdlpath, animation, position, angles);
+		Entity_SpawnProp(newpony);
 	} while (kv.GotoNextKey());
 
 	kv.Rewind();
 	delete kv;
 }
 
-int Entity_SpawnProp(const char[] name, const char[] path,
-	const char[] animation, float position[3], float angles[3])
+int Entity_SpawnProp(Pony pony)
 {
 	int newprop = CreateEntityByName("prop_dynamic");
 
-	DispatchKeyValue(newprop, "targetname", name);
-	DispatchKeyValue(newprop, "model", path);
+	DispatchKeyValue(newprop, "targetname", pony.name);
+	DispatchKeyValue(newprop, "model", pony.path);
 	DispatchKeyValue(newprop, "solid", "0");
 	DispatchKeyValue(newprop, "DisableBoneFollowers", "1");
-	DispatchKeyValue(newprop, "DefaultAnim", animation);
+	DispatchKeyValue(newprop, "DefaultAnim", pony.animation);
+	DispatchKeyValue(newprop, "SetBodyGroup", pony.bodygroup);
 	DispatchSpawn(newprop);
-	TeleportEntity(newprop, position, angles, NULL_VECTOR);
+	TeleportEntity(newprop, pony.position, pony.angles, NULL_VECTOR);
 	SetEntityMoveType(newprop, MOVETYPE_NONE);
 
 	return newprop;
