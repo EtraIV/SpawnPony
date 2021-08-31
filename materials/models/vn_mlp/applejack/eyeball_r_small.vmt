@@ -1,0 +1,10 @@
+"eyes"
+{
+	"$basetexture" "models/VN_mlp/applejack/eyeball_r"
+	"$iris" "models/VN_mlp/applejack/pupil_r_small"
+	"$halflambert" "1"
+
+	"$ambientocclusion" "1"
+	
+	"$cloakPassEnabled" 		"1"
+}

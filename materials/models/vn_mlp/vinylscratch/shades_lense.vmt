@@ -1,0 +1,12 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models\VN_mlp\vinylscratch\shades_lense"
+	"$translucent" "1"
+
+	"$envmap" "models\VN_mlp\vinylscratch\env_steel"
+	"$envmapsaturation" "0.8"
+	"$envmaptint" "[ 0.1 0.1 0.1 ]"
+
+	"$model" 1
+	"$halflambert" "1"
+}

@@ -1,0 +1,10 @@
+"eyes"
+{
+	"$basetexture" "models/VN_mlp/fluttershy/eyeball_r"
+	"$iris" "models/VN_mlp/fluttershy/pupil_r_medium"
+	"$halflambert" "1"
+
+	"$ambientocclusion" "1"
+	
+	"$cloakPassEnabled" 		"1"
+}

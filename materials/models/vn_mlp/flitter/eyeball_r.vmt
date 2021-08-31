@@ -1,0 +1,10 @@
+"eyes"
+{
+	"$basetexture" "models/VN_mlp/flitter/eyeball_r"
+	"$iris" "models/VN_mlp/flitter/pupil_r"
+	"$halflambert" "1"
+
+	"$ambientocclusion" "1"
+	
+	"$cloakPassEnabled" 		"1"
+}

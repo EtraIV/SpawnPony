@@ -1,0 +1,10 @@
+"eyes"
+{
+	"$basetexture" "models/VN_mlp/twilightsparkle/eyeball_r"
+	"$iris" "models/VN_mlp/twilightsparkle/pupil_r_medium"
+	"$halflambert" "1"
+
+	"$ambientocclusion" "1"
+	
+	"$cloakPassEnabled" 		"1"
+}

@@ -1,0 +1,8 @@
+"eyes"
+{
+	"$basetexture" "models/VN_mlp/pinkiepie/eyeball_r"
+	"$iris" "models/VN_mlp/pinkiepie/pupil_r_small"
+	"$halflambert" "1"
+
+	"$ambientocclusion" "1"
+}

@@ -1,0 +1,10 @@
+"eyes"
+{
+	"$basetexture" "models/VN_mlp/lyra/eyeball_l"
+	"$iris" "models/VN_mlp/lyra/pupil_l"
+	"$halflambert" "1"
+
+	"$ambientocclusion" "1"
+	
+	"$cloakPassEnabled" 		"1"
+}
